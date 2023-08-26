@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: playwright-nodejs-func
+metadata:
+  template: playwright-nodejs-func@0.0.1-beta
+services:
+  api:
+    project: ./src/func
+    language: js
+    host: function

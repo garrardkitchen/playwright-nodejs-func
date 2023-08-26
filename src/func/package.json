@@ -1,0 +1,13 @@
+{
+  "name": "deleteme2",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "postinstall-ignore": "npx playwright install firefox",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {    
+    "playwright": "^1.37.1"
+  }
+}
