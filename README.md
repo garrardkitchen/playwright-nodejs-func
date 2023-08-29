@@ -18,14 +18,13 @@ description: A complete ToDo app with Node.js API and Azure Cosmos API for Mongo
 ---
 <!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
 
-# Static React Web App + Functions with Node.js API and MongoDB on Azure
+# Functions with Node.js API 
 
 [![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/azure-samples/todo-nodejs-mongo-swa-func)
 [![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/todo-nodejs-mongo-swa-func)
 
-A blueprint for getting a React web app with a Node.js API and a MongoDB database running on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting static web apps with serverless logic and functionality.
+A blueprint for getting a Azure Functions Node.js App running MS Playwright on Azure. The blueprint includes sample application code which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting serverless logic and functionality.
 
-Let's jump in and get this up and running in Azure. When you are finished, you will have a fully functional web app deployed to the cloud. In later steps, you'll see how to setup a pipeline and monitor the application.
 
 !["Screenshot of deployed ToDo app"](assets/web.png)
 
@@ -50,29 +49,17 @@ This quickstart will show you how to authenticate on Azure, initialize using a t
 azd auth login
 
 # First-time project setup. Initialize a project in the current directory, using this template. 
-azd init --template Azure-Samples/todo-nodejs-mongo-swa-func
+azd init --environment "<env-name>" --template https://github.com/garrardkitchen/playwright-nodejs-func
 
 # Provision and deploy to Azure
 azd up
 ```
 
-> NOTE: This template may only be used used with following Azure locations:
->
-> - Central US
-> - East Asia
-> - East US 2
-> - West Europe
-> - West US 2
->
-> If you attempt to use the template with an unsupported region, the provision step will fail.
-
 ### Application Architecture
 
 This application utilizes the following Azure resources:
 
-- [**Azure Static Web Apps**](https://docs.microsoft.com/azure/static-web-apps/) to host the Web frontend
 - [**Azure Function Apps**](https://docs.microsoft.com/azure/azure-functions/) to host the API backend
-- [**Azure Cosmos DB API for MongoDB**](https://docs.microsoft.com/azure/cosmos-db/mongodb/mongodb-introduction) for storage
 - [**Azure Monitor**](https://docs.microsoft.com/azure/azure-monitor/) for monitoring and logging
 - [**Azure Key Vault**](https://docs.microsoft.com/azure/key-vault/) for securing secrets
 
