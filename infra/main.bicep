@@ -17,13 +17,10 @@ param apiServiceName string = ''
 param applicationInsightsDashboardName string = ''
 param applicationInsightsName string = ''
 param appServicePlanName string = ''
-param cosmosAccountName string = ''
-param cosmosDatabaseName string = ''
 param keyVaultName string = ''
 param logAnalyticsName string = ''
 param resourceGroupName string = ''
 param storageAccountName string = ''
-param webServiceName string = ''
 param apimServiceName string = ''
 
 @description('Flag to use Azure API Management to mediate the calls between the Web frontend and the backend API')
@@ -43,17 +40,6 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   tags: tags
 }
 
-// // The application frontend
-// module web './app/web.bicep' = {
-//   name: 'web'
-//   scope: rg
-//   params: {
-//     name: !empty(webServiceName) ? webServiceName : '${abbrs.webStaticSites}web-${resourceToken}'
-//     location: location
-//     tags: tags
-//   }
-// }
-
 // The application backend
 module api './app/api.bicep' = {
   name: 'api'
@@ -66,12 +52,7 @@ module api './app/api.bicep' = {
     appServicePlanId: appServicePlan.outputs.id
     keyVaultName: keyVault.outputs.name
     storageAccountName: storage.outputs.name
-    // allowedOrigins: [ web.outputs.SERVICE_WEB_URI ]
     appSettings: {
-      // AZURE_COSMOS_CONNECTION_STRING_KEY: cosmos.outputs.connectionStringKey
-      // AZURE_COSMOS_DATABASE_NAME: cosmos.outputs.databaseName
-      // AZURE_COSMOS_ENDPOINT: cosmos.outputs.endpoint
-      // API_ALLOW_ORIGINS: web.outputs.SERVICE_WEB_URI
       PLAYWRIGHT_BROWSERS_PATH: 0
       POST_BUILD_COMMAND: 'echo foo, scripts/postbuild.sh'
     }
@@ -87,19 +68,6 @@ module apiKeyVaultAccess './core/security/keyvault-access.bicep' = {
     principalId: api.outputs.SERVICE_API_IDENTITY_PRINCIPAL_ID
   }
 }
-
-// // The application database
-// module cosmos './app/db.bicep' = {
-//   name: 'cosmos'
-//   scope: rg
-//   params: {
-//     accountName: !empty(cosmosAccountName) ? cosmosAccountName : '${abbrs.documentDBDatabaseAccounts}${resourceToken}'
-//     databaseName: cosmosDatabaseName
-//     location: location
-//     tags: tags
-//     keyVaultName: keyVault.outputs.name
-//   }
-// }
 
 // Create an App Service Plan to group applications under the same payment plan and SKU
 module appServicePlan './core/host/appserviceplan.bicep' = {
@@ -164,34 +132,9 @@ module apim './core/gateway/apim.bicep' = if (useAPIM) {
   }
 }
 
-// Configures the API in the Azure API Management (APIM) service
-// module apimApi './app/apim-api.bicep' = if (useAPIM) {
-//   name: 'apim-api-deployment'
-//   scope: rg
-//   params: {
-//     name: useAPIM ? apim.outputs.apimServiceName : ''
-//     apiName: 'todo-api'
-//     apiDisplayName: 'Simple Todo API'
-//     apiDescription: 'This is a simple Todo API'
-//     apiPath: 'todo'
-//     // webFrontendUrl: web.outputs.SERVICE_WEB_URI
-//     apiBackendUrl: api.outputs.SERVICE_API_URI
-//     apiAppName: api.outputs.SERVICE_API_NAME
-//   }
-// }
-
-// // Data outputs
-// output AZURE_COSMOS_CONNECTION_STRING_KEY string = cosmos.outputs.connectionStringKey
-// output AZURE_COSMOS_DATABASE_NAME string = cosmos.outputs.databaseName
-
 // App outputs
 output APPLICATIONINSIGHTS_CONNECTION_STRING string = monitoring.outputs.applicationInsightsConnectionString
 output AZURE_KEY_VAULT_ENDPOINT string = keyVault.outputs.endpoint
 output AZURE_KEY_VAULT_NAME string = keyVault.outputs.name
 output AZURE_LOCATION string = location
 output AZURE_TENANT_ID string = tenant().tenantId
-// output REACT_APP_API_BASE_URL string = useAPIM ? apimApi.outputs.SERVICE_API_URI : api.outputs.SERVICE_API_URI
-// output REACT_APP_APPLICATIONINSIGHTS_CONNECTION_STRING string = monitoring.outputs.applicationInsightsConnectionString
-// // output REACT_APP_WEB_BASE_URL string = web.outputs.SERVICE_WEB_URI
-// output USE_APIM bool = useAPIM
-// output SERVICE_API_ENDPOINTS array = useAPIM ? [ apimApi.outputs.SERVICE_API_URI, api.outputs.SERVICE_API_URI ]: []
