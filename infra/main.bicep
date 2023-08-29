@@ -54,7 +54,7 @@ module api './app/api.bicep' = {
     storageAccountName: storage.outputs.name
     appSettings: {
       PLAYWRIGHT_BROWSERS_PATH: 0
-      POST_BUILD_COMMAND: 'echo foo, scripts/postbuild.sh'
+      POST_BUILD_COMMAND: 'scripts/postbuild.sh'
     }
   }
 }
