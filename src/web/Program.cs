@@ -3,6 +3,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+if (builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"] != null)
+{
+    builder.Services.AddApplicationInsightsTelemetry(options => options.ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
+} else
+{
+    builder.Services.AddApplicationInsightsTelemetry(); 
+}
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -8,7 +8,7 @@ param appServicePlanId string
 @secure()
 param appSettings object = {}
 param keyVaultName string
-param serviceName string = 'api'
+param serviceName string = 'func'
 param storageAccountName string
 
 module api '../core/host/functions.bicep' = {
