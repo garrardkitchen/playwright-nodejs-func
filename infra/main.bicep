@@ -22,6 +22,7 @@ param logAnalyticsName string = ''
 param resourceGroupName string = ''
 param storageAccountName string = ''
 param apimServiceName string = ''
+param webServiceName string = ''
 
 @description('Flag to use Azure API Management to mediate the calls between the Web frontend and the backend API')
 param useAPIM bool = false
@@ -38,6 +39,21 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: !empty(resourceGroupName) ? resourceGroupName : '${abbrs.resourcesResourceGroups}${environmentName}'
   location: location
   tags: tags
+}
+
+module web './app/web.bicep' = {
+  name: 'web'
+  scope: rg
+  params: {
+    name: !empty(webServiceName) ? webServiceName : '${abbrs.webSitesAppService}web-${resourceToken}'
+    location: location
+    tags: tags
+    applicationInsightsName: monitoring.outputs.applicationInsightsName
+    appServicePlanId: appServicePlan.outputs.id
+    appSettings: {
+      URLAPI: api.outputs.SERVICE_API_URI
+    }
+  }
 }
 
 // The application backend
