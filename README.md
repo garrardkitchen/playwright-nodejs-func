@@ -46,6 +46,7 @@ This quickstart will show you how to authenticate on Azure, initialize using a t
 
 ```bash
 # Log in to azd. Only required once per-install.
+azd auth logout # avoid any expired refresh tokens; you'll experience multiple auth challenges and a broken DX otherwise
 azd auth login
 
 # First-time project setup. Initialize a project in the current directory, using this template. 
