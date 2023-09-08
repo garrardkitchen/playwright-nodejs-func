@@ -53,6 +53,7 @@ module web './app/web.bicep' = {
     applicationInsightsName: monitoring.outputs.applicationInsightsName
     appServicePlanId: appServicePlanWeb.outputs.id
     appSettings: {     
+      KEYVAULT_NAME: keyVault.outputs.name
     }
   }
 }

@@ -17,8 +17,12 @@ module.exports = async function (context, myTimer) {
 
   const ctx = await browser.newContext();
   const page = await ctx.newPage();
+  const website = process.env["WEBAPP_URI"]
 
-  await page.goto('https://www.microsoft.com/edge');
+  context.log(`website = ${website}`)
+
+  await page.goto(website); //'https://www.microsoft.com/edge');
+
   //   await page.screenshot({ path: 'example.png' });  
 
   let body = await page.innerText('body', { timeout: 20000 })
