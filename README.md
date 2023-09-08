@@ -28,8 +28,6 @@ description: A sample E2E NodeJS timer trigger that navigates the ASP.NET Core w
 A blueprint for getting a Azure Functions Node.js App running MS Playwright on Azure. The blueprint includes sample application code which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting serverless logic and functionality.
 
 
-!["Screenshot of deployed functions app"](assets/web.png)
-
 ### Prerequisites
 > This template will create infrastructure and deploy code to Azure. If you don't have an Azure Subscription, you can sign up for a [free account here](https://azure.microsoft.com/free/). Make sure you have contributor role to the Azure subscription.
 
