@@ -11,7 +11,7 @@
                     <mxGeometry x="205" width="185" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="37" value="Compute&amp;nbsp;&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;arcSize=3;verticalAlign=bottom;align=right;" vertex="1" parent="1">
-                    <mxGeometry x="394" y="393" width="185" height="120" as="geometry"/>
+                    <mxGeometry x="393" y="400" width="185" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="36" value="Storage&amp;nbsp;&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;arcSize=3;verticalAlign=bottom;align=right;" vertex="1" parent="1">
                     <mxGeometry x="25" y="400" width="185" height="120" as="geometry"/>
@@ -71,7 +71,7 @@
                     <mxGeometry x="85" y="434" width="65" height="52" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/app_services/App_Service_Plans.svg;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
-                    <mxGeometry x="457" y="422" width="64" height="64" as="geometry"/>
+                    <mxGeometry x="459" y="428" width="64" height="64" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" style="edgeStyle=elbowEdgeStyle;html=1;dashed=1;strokeColor=#004C99;fontColor=#000000;" edge="1" parent="1" source="13" target="42">
                     <mxGeometry relative="1" as="geometry">
