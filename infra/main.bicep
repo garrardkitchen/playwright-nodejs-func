@@ -17,11 +17,13 @@ param apiServiceName string = ''
 param applicationInsightsDashboardName string = ''
 param applicationInsightsName string = ''
 param appServicePlanName string = ''
+param appServicePlanNameWeb string = ''
 param keyVaultName string = ''
 param logAnalyticsName string = ''
 param resourceGroupName string = ''
 param storageAccountName string = ''
 param apimServiceName string = ''
+param webServiceName string = ''
 
 @description('Flag to use Azure API Management to mediate the calls between the Web frontend and the backend API')
 param useAPIM bool = false
@@ -40,12 +42,28 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   tags: tags
 }
 
-// The application backend
-module api './app/api.bicep' = {
-  name: 'api'
+// web app
+module web './app/web.bicep' = {
+  name: 'web'
   scope: rg
   params: {
-    name: !empty(apiServiceName) ? apiServiceName : '${abbrs.webSitesFunctions}api-${resourceToken}'
+    name: !empty(webServiceName) ? webServiceName : '${abbrs.webSitesAppService}web-${resourceToken}'
+    location: location
+    tags: tags
+    applicationInsightsName: monitoring.outputs.applicationInsightsName
+    appServicePlanId: appServicePlanWeb.outputs.id
+    appSettings: {     
+      KEYVAULT_NAME: keyVault.outputs.name
+    }
+  }
+}
+
+// Func App
+module func './app/func.bicep' = {
+  name: 'func'
+  scope: rg
+  params: {
+    name: !empty(apiServiceName) ? apiServiceName : '${abbrs.webSitesFunctions}playwright-${resourceToken}'
     location: location
     tags: tags
     applicationInsightsName: monitoring.outputs.applicationInsightsName
@@ -55,6 +73,7 @@ module api './app/api.bicep' = {
     appSettings: {
       PLAYWRIGHT_BROWSERS_PATH: 0
       POST_BUILD_COMMAND: 'scripts/postbuild.sh'
+      WEBAPP_URI: web.outputs.SERVICE_WEB_URI
     }
   }
 }
@@ -65,7 +84,7 @@ module apiKeyVaultAccess './core/security/keyvault-access.bicep' = {
   scope: rg
   params: {
     keyVaultName: keyVault.outputs.name
-    principalId: api.outputs.SERVICE_API_IDENTITY_PRINCIPAL_ID
+    principalId: func.outputs.SERVICE_API_IDENTITY_PRINCIPAL_ID
   }
 }
 
@@ -80,6 +99,21 @@ module appServicePlan './core/host/appserviceplan.bicep' = {
     sku: {
       name: 'Y1'
       tier: 'Dynamic'
+    }
+  }
+}
+
+
+// Create an App Service Plan to group applications under the same payment plan and SKU
+module appServicePlanWeb './core/host/appserviceplan.bicep' = {
+  name: 'appserviceplanweb'
+  scope: rg
+  params: {
+    name: !empty(appServicePlanNameWeb) ? appServicePlanNameWeb : '${abbrs.webServerFarms}wazdeb${resourceToken}'
+    location: location
+    tags: tags
+    sku: {
+      name: 'B2'
     }
   }
 }

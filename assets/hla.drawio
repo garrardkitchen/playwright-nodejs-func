@@ -1,0 +1,96 @@
+<mxfile host="65bd71144e">
+    <diagram id="qQz9nt6aCGnhlVeeNgsw" name="Page-1">
+        <mxGraphModel dx="1873" dy="1754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="41" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;arcSize=1;verticalAlign=bottom;align=right;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+                    <mxGeometry x="-10" y="-33.5" width="620" height="573.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Monitoring&amp;nbsp;&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;arcSize=3;verticalAlign=bottom;align=right;" vertex="1" parent="1">
+                    <mxGeometry x="205" width="185" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Compute&amp;nbsp;&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;arcSize=3;verticalAlign=bottom;align=right;" vertex="1" parent="1">
+                    <mxGeometry x="393" y="400" width="185" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="Storage&amp;nbsp;&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;arcSize=3;verticalAlign=bottom;align=right;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="400" width="185" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;dashed=1;labelBackgroundColor=#FFFFFF;strokeColor=#004C99;fontColor=#000000;" edge="1" parent="1" source="25" target="40">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="290" y="118.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;labelBackgroundColor=#FFFFFF;strokeColor=#004C99;fontColor=#000000;" edge="1" parent="1" source="25" target="37">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Razor Pages ASP.NET Core&amp;nbsp;&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;arcSize=3;verticalAlign=bottom;align=right;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="198" width="190" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;dashed=1;labelBackgroundColor=#FFFFFF;strokeColor=#004C99;fontColor=#000000;" edge="1" parent="1" source="23" target="36">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="117.5" y="393" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Timer state&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;" vertex="1" connectable="0" parent="27">
+                    <mxGeometry x="-0.5607" y="2" relative="1" as="geometry">
+                        <mxPoint x="-2" y="28" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;dashed=1;labelBackgroundColor=#FFFFFF;strokeColor=#004C99;fontColor=#000000;" edge="1" parent="1" source="23" target="40">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="290" y="118.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;dashed=1;labelBackgroundColor=#FFFFFF;strokeColor=#004C99;fontColor=#000000;" edge="1" parent="1" source="23" target="37">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="485" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;dashed=1;labelBackgroundColor=#FFFFFF;strokeColor=#004C99;fontColor=#000000;" edge="1" parent="1" source="23" target="25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;MS Playwright API&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;" vertex="1" connectable="0" parent="34">
+                    <mxGeometry x="0.2298" relative="1" as="geometry">
+                        <mxPoint x="-20" y="-2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="NodeJS TimerTrigger&amp;nbsp;&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;arcSize=3;verticalAlign=bottom;align=right;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="202" width="185" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/compute/App_Services.svg;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="491" y="225" width="64" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/compute/Function_Apps.svg;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="115" y="231" width="68" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Resource_Groups.svg;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="17" y="-10" width="68" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/storage/Storage_Accounts.svg;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="85" y="434" width="65" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/app_services/App_Service_Plans.svg;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="459" y="428" width="64" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=elbowEdgeStyle;html=1;dashed=1;strokeColor=#004C99;fontColor=#000000;" edge="1" parent="1" source="13" target="42">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="300" y="58.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/devops/Application_Insights.svg;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="27" width="44" height="63" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.android;fillColor=#115193;gradientColor=none;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="410" y="231" width="55" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.android;fillColor=#8CC64F;gradientColor=none;labelBackgroundColor=#FFFFFF;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="45" y="234" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Log_Analytics_Workspaces.svg;dashed=1;dashPattern=8 8;labelBackgroundColor=#FFFFFF;strokeColor=#004C99;strokeWidth=1;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="27" width="64" height="64" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

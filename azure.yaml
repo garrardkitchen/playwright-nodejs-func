@@ -4,7 +4,11 @@ name: playwright-nodejs-func
 metadata:
   template: playwright-nodejs-func@0.0.1-beta
 services:
-  api:
+  web:
+    project: ./src/web
+    language: csharp
+    host: appservice
+  func:
     project: ./src/func
     language: js
     host: function

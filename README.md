@@ -4,31 +4,29 @@ languages:
 - azdeveloper
 - nodejs
 - bicep
-- typescript
+- javascript
+- csharp
 - html
 products:
 - azure
-- azure-cosmos-db
+- azure-app-service
+- azure-storage-account
 - azure-functions
 - azure-monitor
 - azure-pipelines
-urlFragment: todo-nodejs-mongo-swa-func
-name: Static React Web App + Functions with Node.js API and MongoDB on Azure
-description: A complete ToDo app with Node.js API and Azure Cosmos API for MongoDB for storage. Uses Azure Developer CLI (azd) to build, deploy, and monitor
+urlFragment: playwright-nodejs-func
+name: Web App + Functions with Node.js and ASP.NET Core on Azure
+description: A sample E2E NodeJS timer trigger that navigates the ASP.NET Core web app. Uses Azure Developer CLI (azd) to build, deploy, and monitor
 ---
 <!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
 
-# Functions with Node.js API 
+# Functions with Node.js 
 
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/azure-samples/todo-nodejs-mongo-swa-func)
-[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/todo-nodejs-mongo-swa-func)
+[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/garrardkitchen/playwright-nodejs-func)
+[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=hhttps://github.com/garrardkitchen/playwright-nodejs-func)
 
 A blueprint for getting a Azure Functions Node.js App running MS Playwright on Azure. The blueprint includes sample application code which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting serverless logic and functionality.
 
-
-!["Screenshot of deployed ToDo app"](assets/web.png)
-
-<sup>Screenshot of the deployed ToDo app</sup>
 
 ### Prerequisites
 > This template will create infrastructure and deploy code to Azure. If you don't have an Azure Subscription, you can sign up for a [free account here](https://azure.microsoft.com/free/). Make sure you have contributor role to the Azure subscription.
@@ -56,17 +54,62 @@ azd init --environment "<env-name>" --template https://github.com/garrardkitchen
 azd up
 ```
 
+What you'll likely see when you run `azd up`:
+
+```
+Packaging services (azd package)
+
+  (✓) Done: Packaging service func
+  - Package Output: C:\Users\********\AppData\Local\Temp\azddeploy39****668.zip
+
+  (✓) Done: Packaging service web
+  - Package Output: C:\Users\********\AppData\Local\Temp\azddeploy10****5308.zip
+
+Provisioning Azure resources (azd provision)
+Provisioning Azure resources can take some time
+
+  You can view detailed progress in the Azure Portal:
+  https://portal.azure.com/#view/HubsExtension/DeploymentDetailsBlade/~/overview/id/%2Fsubscriptions%2F82****f-584c-4b28-918a-14e99****fb%2Fproviders%2FMicrosoft.Resources%2Fdeployments%2Ffuncapp-nodejs-dev-1693420050
+
+  (✓) Done: Resource group: rg-funcapp-nodejs-dev
+  (✓) Done: Storage account: stuqdf4dvo2jr5a
+  (✓) Done: Log Analytics workspace: log-uqdf*****jr5a
+  (✓) Done: App Service plan: plan-wazdebuqdf*****jr5a
+  (✓) Done: App Service plan: plan-uqdf*****jr5a
+  (✓) Done: Application Insights: appi-uqdf*****jr5a
+  (✓) Done: Portal dashboard: dash-uqdf*****jr5a
+  (✓) Done: Key Vault: kv-uqdf*****jr5a
+  (✓) Done: App Service: app-web-uqdf*****jr5a
+  (✓) Done: Function App: func-playwright-uqdf*****jr5a
+
+
+Deploying services (azd deploy)
+
+  (✓) Done: Deploying service func
+  - Endpoint: https://func-playwright-uqdf*****jr5a.azurewebsites.net/
+
+  (✓) Done: Deploying service web
+  - Endpoint: https://app-web-uqdf*****jr5a.azurewebsites.net/
+
+
+SUCCESS: Your application was provisioned and deployed to Azure in 7 minutes 36 seconds.
+You can view the resources created under the resource group rg-funcapp-nodejs-dev in Azure Portal:
+https://portal.azure.com/#@/resource/subscriptions/82*****f-584c-4b28-918a-14e9*****fb/resourceGroups/rg-funcapp-nodejs-dev/overview
+```
+
 ### Application Architecture
 
 This application utilizes the following Azure resources:
 
-- [**Azure Function Apps**](https://docs.microsoft.com/azure/azure-functions/) to host the API backend
+- [**Azure Function Apps**](https://docs.microsoft.com/azure/azure-functions/) to host the timer trigger
+- [**Web App**](https://learn.microsoft.com/en-us/azure/app-service/) to host the web app
+- [**Storage Account**](https://learn.microsoft.com/en-us/azure/storage/) to store the functions app and it's timer state
 - [**Azure Monitor**](https://docs.microsoft.com/azure/azure-monitor/) for monitoring and logging
 - [**Azure Key Vault**](https://docs.microsoft.com/azure/key-vault/) for securing secrets
 
 Here's a high level architecture diagram that illustrates these components. Notice that these are all contained within a single [resource group](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal), that will be created for you when you create the resources.
 
-!["Application architecture diagram"](assets/resources.png)
+!["Application architecture diagram"](assets/hla.png)
 
 > This template provisions resources to an Azure subscription that you will select upon provisioning them. Please refer to the [Pricing calculator for Microsoft Azure](https://azure.microsoft.com/pricing/calculator/) and, if needed, update the included Azure resource definitions found in `infra/main.bicep` to suit your needs.
 
