@@ -21,29 +21,30 @@ module.exports = async function (context, myTimer) {
 
   context.log(`website = ${website}`)
 
-  await page.goto(website); //'https://www.microsoft.com/edge');
+  await page.goto(website); 
 
-  //   await page.screenshot({ path: 'example.png' });  
+  // you can uncomment this if you want to grab a screenshot
+  // await page.screenshot({ path: 'example.png' });  
 
   let body = await page.innerText('body', { timeout: 20000 })
 
+  // we just need confirmation that we've hit the site but don't need to pipe DOM element to logs
   context.log(`body length = ${body.length}`)
+  
+  await page.getByRole('link', { name: 'Home' }).click();
+  await page.getByRole('list').getByRole('link', { name: 'Privacy' }).click();
+  await page.getByRole('link', { name: 'Home' }).click();
+  
+  let locator = await page.getByRole('heading', { name: 'Welcome' })
+  let locatorText = await locator.textContent()
+
+  if (locatorText != "Welcome") {
+    context.log.warn(`Welcome heading not found`)
+  } else {
+    context.log(`Welcome heading found`)
+  }
 
   await browser.close();
 
   context.log('JavaScript timer trigger function ran!', timeStamp);
 };
-
-
-
-// (async () => {
-//   const browser = await playwright.chromium.launch({
-//     channel: 'msedge',
-//   });
-//   const context = await browser.newContext();
-//   const page = await context.newPage();
-//   await page.goto('https://www.microsoft.com/edge');
-//   await page.screenshot({ path: 'example.png' });
-
-//   await browser.close();
-// })();

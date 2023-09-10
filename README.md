@@ -25,7 +25,7 @@ description: A sample E2E NodeJS timer trigger that navigates the ASP.NET Core w
 [![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/garrardkitchen/playwright-nodejs-func)
 [![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=hhttps://github.com/garrardkitchen/playwright-nodejs-func)
 
-A blueprint for getting a Azure Functions Node.js App running MS Playwright on Azure. The blueprint includes sample application code which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting serverless logic and functionality.
+A blueprint for getting a Azure Functions Node.js on Linux Consumption Plan running MS Playwright on Azure that navigates around a sample Razor Pages for ASP.NET Core app. The blueprint includes sample application code which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting serverless logic and functionality.
 
 
 ### Prerequisites

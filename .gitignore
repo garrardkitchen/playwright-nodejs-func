@@ -3,3 +3,5 @@ __azurite
 *.dll
 obj/
 bin/
+__azurite*
+__blobstorage*
