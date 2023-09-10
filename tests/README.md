@@ -2,18 +2,33 @@
 
 The included [Playwright](https://playwright.dev/) smoke test will hit the ToDo app web endpoint, create, and delete an item.
 
+## Run the Razor Pages in ASP.NET Core app:
+
+Set the listener port:
+
+_The tests below will hit this endpoint_
+
+```powershell
+dotnet run --urls=http://localhost:3000/
+```
+
 ## Run Tests
 
 The endpoint it hits will be discovered in this order:
 
 1. Value of `REACT_APP_WEB_BASE_URL` environment variable
+
+    ```powershell
+    $env:REACT_APP_WEB_BASE_URL="http://localhost:3000"
+    ```
+
 1. Value of `REACT_APP_WEB_BASE_URL` found in default .azure environment
 1. Defaults to `http://localhost:3000`
 
 To run the tests:
 
 1. CD to /tests
-1. Run `npm i && npx playwright install`
+1. Run `npm i && npx playwright install firefox`
 1. Run `npx playwright test`
 
 You can use the `--headed` flag to open a browser when running the tests.
@@ -27,3 +42,12 @@ npx playwright test --debug
 ```
 
 More debugging references: https://playwright.dev/docs/debug and https://playwright.dev/docs/trace-viewer
+
+
+## Show test report
+
+Enter this to see test report in a browser:
+
+```powershell
+npx playwright show-report
+```

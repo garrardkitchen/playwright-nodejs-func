@@ -5,3 +5,4 @@ obj/
 bin/
 __azurite*
 __blobstorage*
+tests/nodes_modules
