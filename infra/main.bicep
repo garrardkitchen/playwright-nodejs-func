@@ -89,7 +89,7 @@ module appServicePlan './core/host/appserviceplan.bicep' = {
   name: 'appserviceplan'
   scope: rg
   params: {
-    name: !empty(appServicePlanName) ? appServicePlanName : '${abbrs.webServerFarms}${resourceToken}'
+    name: !empty(appServicePlanName) ? appServicePlanName : '${abbrs.webServerFarms}${resourceToken}func'
     location: location
     tags: tags
     sku: {
@@ -105,7 +105,7 @@ module appServicePlanWeb './core/host/appserviceplan.bicep' = {
   name: 'appserviceplanweb'
   scope: rg
   params: {
-    name: !empty(appServicePlanNameWeb) ? appServicePlanNameWeb : '${abbrs.webServerFarms}wazdeb${resourceToken}'
+    name: !empty(appServicePlanNameWeb) ? appServicePlanNameWeb : '${abbrs.webServerFarms}${resourceToken}web'
     location: location
     tags: tags
     sku: {
