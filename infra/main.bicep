@@ -103,6 +103,9 @@ module appServicePlan './core/host/appserviceplan.bicep' = {
 // Create an App Service Plan to group applications under the same payment plan and SKU
 module appServicePlanWeb './core/host/appserviceplan.bicep' = {
   name: 'appserviceplanweb'
+  dependsOn: [
+    appServicePlan
+  ]
   scope: rg
   params: {
     name: !empty(appServicePlanNameWeb) ? appServicePlanNameWeb : '${abbrs.webServerFarms}${resourceToken}web'
